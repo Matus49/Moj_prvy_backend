@@ -1,0 +1,5 @@
+Bash
+pip freeze > requirements.txt
+
+Bash
+pip install gunicorn
