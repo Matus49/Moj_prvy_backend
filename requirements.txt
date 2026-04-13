@@ -1,5 +1,3 @@
-Bash
-pip freeze > requirements.txt
-
-Bash
-pip install gunicorn
+Flask
+flask-cors
+gunicorn
