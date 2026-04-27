@@ -1,4 +1,3 @@
 flask
-openai
-python-dotenv
+flask-sqlalchemy
 gunicorn
