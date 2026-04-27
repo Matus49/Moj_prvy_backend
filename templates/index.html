@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <title>Môj Prvý Backend</title>
+    <style>
+        body { font-family: sans-serif; max-width: 500px; margin: 50px auto; text-align: center; }
+        input { padding: 10px; width: 70%; }
+        button { padding: 10px; cursor: pointer; }
+        ul { list-style: none; padding: 0; }
+        li { background: #f4f4f4; margin: 5px 0; padding: 10px; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <h1>Kniha odkazov</h1>
+    <form method="POST">
+        <input type="text" name="content" placeholder="Napíš niečo..." required>
+        <button type="submit">Odoslať</button>
+    </form>
+    <hr>
+    <ul>
+        {% for s in spravy %}
+            <li>{{ s.obsah }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
