@@ -4,87 +4,101 @@ app = Flask(__name__)
 
 databaza = {
     "students": [
-        {"id": 1, "name": "Matus", "surname": "Bucko", "nickname": "NEON1X", "photo": "https://i.pravatar.cc/300?u=1"},
-        {"id": 2, "name": "Samo", "surname": "Haring", "nickname": "Topikar", "photo": "https://i.pravatar.cc/300?u=2"},
-        {"id": 3, "name": "Milan", "surname": "Kokina", "nickname": "RED BULL", "photo": "https://i.pravatar.cc/300?u=3"},
-        {"id": 4, "name": "Matej", "surname": "Randziak", "nickname": "Tankista", "photo": "https://i.pravatar.cc/300?u=4"},
-        {"id": 5, "name": "Janka", "surname": "Vargova", "nickname": "Dzejna", "photo": "https://i.pravatar.cc/300?u=5"},
-        {"id": 6, "name": "Martin", "surname": "Jelinek", "nickname": "Maťo", "photo": "https://i.pravatar.cc/300?u=6"},
-        {"id": 7, "name": "Markus", "surname": "Martis", "nickname": "Zid", "photo": "https://i.pravatar.cc/300?u=7"},
-        {"id": 8, "name": "Adrian", "surname": "Cervenka", "nickname": "Valorant Enjoyer", "photo": "https://i.pravatar.cc/300?u=8"},
-        {"id": 9, "name": "Tomas", "surname": "Jurcak", "nickname": "Jurcacik", "photo": "https://i.pravatar.cc/300?u=9"},
-        {"id": 10, "name": "Marko", "surname": "Mihalicka", "nickname": "Jiggler", "photo": "https://i.pravatar.cc/300?u=10"},
+        {"id": 1, "name": "Matus", "surname": "Bucko", "nickname": "NEON1X", "photo": "https://i.pravatar.cc/300?u=1", "role": "Carry"},
+        {"id": 2, "name": "Samo", "surname": "Haring", "nickname": "Topikar", "photo": "https://i.pravatar.cc/300?u=2", "role": "Support"},
+        {"id": 3, "name": "Milan", "surname": "Kokina", "nickname": "RED BULL", "photo": "https://i.pravatar.cc/300?u=3", "role": "Jungler"},
+        {"id": 4, "name": "Matej", "surname": "Randziak", "nickname": "Tankista", "photo": "https://i.pravatar.cc/300?u=4", "role": "Tank"},
+        {"id": 5, "name": "Janka", "surname": "Vargova", "nickname": "Dzejna", "photo": "https://i.pravatar.cc/300?u=5", "role": "Mage"},
+        {"id": 6, "name": "Martin", "surname": "Jelinek", "nickname": "Maťo", "photo": "https://i.pravatar.cc/300?u=6", "role": "Duelist"},
+        {"id": 7, "name": "Markus", "surname": "Martis", "nickname": "Zid", "photo": "https://i.pravatar.cc/300?u=7", "role": "Initiator"},
+        {"id": 8, "name": "Adrian", "surname": "Cervenka", "nickname": "Valorant Enjoyer", "photo": "https://i.pravatar.cc/300?u=8", "role": "Controller"},
+        {"id": 9, "name": "Tomas", "surname": "Jurcak", "nickname": "Jurcacik", "photo": "https://i.pravatar.cc/300?u=9", "role": "Flanker"},
+        {"id": 10, "name": "Marko", "surname": "Mihalicka", "nickname": "Jiggler", "photo": "https://i.pravatar.cc/300?u=10", "role": "Entry Fragger"},
     ]
 }
 
-# Vylepšená HTML Šablóna
 HTML_TEMPLATE = """
 <!DOCTYPE html>
 <html lang="sk">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Študentský Portál</title>
+    <title>Gamer Roster | Dashboard</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Inter', sans-serif; }
+        body { 
+            font-family: 'Rajdhani', sans-serif; 
+            background-color: #0f172a;
+            background-image: radial-gradient(circle at 50% 50%, #1e293b 0%, #0f172a 100%);
+        }
+        .glass-card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .player-card:hover {
+            border-color: #3b82f6;
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
+        }
+        .neon-text {
+            text-shadow: 0 0 10px rgba(59, 130, 246, 0.8);
+        }
     </style>
 </head>
-<body class="bg-gradient-to-br from-slate-50 to-slate-200 min-h-screen p-6 md:p-12">
-    <div class="max-w-7xl mx-auto">
-        <header class="text-center mb-16">
-            <h1 class="text-5xl font-extrabold text-slate-800 tracking-tight mb-2">
-                Triedna kniha
+<body class="text-slate-200 min-h-screen p-4 md:p-8">
+    <div class="max-w-6xl mx-auto">
+        <header class="text-center mb-12">
+            <h1 class="text-6xl font-bold uppercase tracking-tighter neon-text text-white italic">
+                Player <span class="text-blue-500">Database</span>
             </h1>
-            <p class="text-slate-500 text-lg">Prehľad študentov v aktuálnom semestri</p>
-            <div class="w-24 h-1 bg-blue-500 mx-auto mt-4 rounded-full"></div>
+            <p class="text-slate-400 mt-2 tracking-widest uppercase text-sm">Aktívni operátori v systéme</p>
         </header>
         
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {% for student in students %}
-            <div class="group bg-white rounded-2xl shadow-sm hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-slate-100 overflow-hidden">
-                <div class="relative h-56 overflow-hidden">
-                    <img class="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-500" 
-                         src="{{ student.photo }}" 
-                         alt="{{ student.name }}">
-                    <div class="absolute top-3 right-3">
-                        <span class="bg-white/90 backdrop-blur-sm text-slate-700 text-xs font-bold px-3 py-1.5 rounded-full shadow-sm">
-                            #{{ student.id }}
-                        </span>
+            <div class="player-card glass-card rounded-xl overflow-hidden transition-all duration-300 group">
+                <div class="relative">
+                    <img src="{{ student.photo }}" alt="{{ student.nickname }}" class="w-full h-64 object-cover opacity-80 group-hover:opacity-100 transition-opacity">
+                    
+                    <div class="absolute top-4 left-4 bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-sm skew-x-[-15deg]">
+                        LVL {{ student.id }}
+                    </div>
+                    
+                    <div class="absolute bottom-4 right-4 bg-black/60 backdrop-blur-md border border-white/20 text-blue-400 text-xs px-2 py-1 uppercase font-bold">
+                        {{ student.role }}
                     </div>
                 </div>
 
-                <div class="p-6">
-                    <div class="mb-4">
-                        <h2 class="text-2xl font-bold text-slate-800 leading-tight">
-                            {{ student.name }} <span class="text-blue-600">{{ student.surname }}</span>
-                        </h2>
-                        <p class="text-sm font-medium text-slate-400 uppercase tracking-widest mt-1">
-                            {% if student.nickname %}
-                                "{{ student.nickname }}"
-                            {% else %}
-                                <span class="italic opacity-50 text-xs">Bez prezývky</span>
-                            {% endif %}
-                        </p>
+                <div class="p-5 border-t border-white/10">
+                    <div class="flex justify-between items-end mb-4">
+                        <div>
+                            <h3 class="text-3xl font-bold text-white leading-none mb-1 uppercase italic">
+                                {{ student.nickname }}
+                            </h3>
+                            <p class="text-slate-400 text-sm font-semibold">
+                                {{ student.name }} "{{ student.surname }}"
+                            </p>
+                        </div>
                     </div>
 
-                    <div class="pt-4 border-t border-slate-50">
-                        <a href="/api/student/{{ student.id }}" 
-                           class="inline-flex items-center justify-center w-full bg-slate-800 text-white font-semibold py-3 px-4 rounded-xl hover:bg-blue-600 transition-colors group">
-                            Zobraziť detaily
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                            </svg>
+                    <div class="grid grid-cols-2 gap-2 mt-4">
+                        <a href="/api/student/{{ student.id }}" class="flex items-center justify-center bg-white/5 hover:bg-blue-600 hover:text-white transition-all py-2 rounded text-xs font-bold uppercase tracking-wider border border-white/10">
+                            Profil
                         </a>
+                        <button class="flex items-center justify-center bg-blue-500/10 border border-blue-500/50 text-blue-400 hover:bg-blue-500 hover:text-white transition-all py-2 rounded text-xs font-bold uppercase tracking-wider">
+                            Štatistiky
+                        </button>
                     </div>
                 </div>
             </div>
             {% endfor %}
         </div>
-        
-        <footer class="text-center mt-20 text-slate-400 text-sm">
-            © 2024 Študentský systém • Design by Gemini
+
+        <footer class="mt-16 text-center border-t border-white/5 pt-8">
+            <p class="text-slate-500 uppercase text-xs tracking-widest">
+                System Status: <span class="text-green-500">Online</span> | Verzia 2.0.4
+            </p>
         </footer>
     </div>
 </body>
@@ -104,7 +118,7 @@ def find_student(student_id):
     for student in databaza["students"]:
         if student["id"] == student_id:
             return jsonify(student)
-    return jsonify({"error": "Student not found"}), 404
+    return jsonify({"error": "Hráč nebol nájdený"}), 404
 
 if __name__ == '__main__':
     app.run(debug=True)
