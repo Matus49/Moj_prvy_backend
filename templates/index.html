@@ -14,11 +14,23 @@
 </head>
 <body class="text-slate-200 min-h-screen p-4 md:p-8">
     <div class="max-w-6xl mx-auto">
-        <header class="text-center mb-12">
-            <h1 class="text-6xl font-bold uppercase neon-text text-white italic">
+        <header class="text-center mb-8">
+            <h1 class="text-6xl font-bold uppercase neon-text text-white italic mb-4">
                 Player <span class="text-blue-500">Database</span>
             </h1>
         </header>
+
+        <div class="flex justify-end mb-6">
+            <form method="GET" action="/" class="glass-card p-3 rounded-lg flex items-center gap-3">
+                <label for="sort_by" class="text-sm font-semibold uppercase tracking-wider text-slate-400">Zoradiť podľa:</label>
+                <select name="sort_by" id="sort_by" onchange="this.form.submit()" class="bg-slate-800 border border-slate-700 text-white rounded px-3 py-1 text-sm font-semibold focus:outline-none focus:border-blue-500">
+                    <option value="id" {% if aktualne_radenie == 'id' %}selected{% endif %}>Predvolené (ID)</option>
+                    <option value="name" {% if aktualne_radenie == 'name' %}selected{% endif %}>Mena (A-Z)</option>
+                    <option value="surname" {% if aktualne_radenie == 'surname' %}selected{% endif %}>Priezviska (A-Z)</option>
+                    <option value="nickname" {% if aktualne_radenie == 'nickname' %}selected{% endif %}>Prezývky (A-Z)</option>
+                </select>
+            </form>
+        </div>
         
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {% for student in students %}
