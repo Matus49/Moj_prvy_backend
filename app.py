@@ -5,7 +5,6 @@ import os
 app = Flask(__name__)
 
 # Konfigurácia databázy
-# Render používa premenné prostredia, sqlite je fajn na začiatok
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
@@ -41,8 +40,20 @@ def index():
             db.session.commit()
         return redirect('/')
     
+    # --- LOGIKA ZORADZOVANIA ---
+    # Získame parameter 'sort_by' z URL (napr. /?sort_by=name)
+    sort_by = request.args.get('sort_by', 'id') # Predvolene zoradí podľa ID
+    
+    # Skontrolujeme, či je parameter platný, aby sme predišli chybám
+    if sort_by in ['name', 'surname', 'nickname']:
+        # lambda s: s[sort_by].lower() zabezpečí, že sa bude radiť bez ohľadu na veľké/malé písmená
+        studenti_na_zobrazenie = sorted(databaza_studentov, key=lambda s: s[sort_by].lower())
+    else:
+        studenti_na_zobrazenie = databaza_studentov
+
     vsetky_spravy = Sprava.query.all()
-    return render_template('index.html', students=databaza_studentov, spravy=vsetky_spravy)
+    # Do šablóny posielame už zoradený zoznam pod premennou 'students'
+    return render_template('index.html', students=studenti_na_zobrazenie, spravy=vsetky_spravy, aktualne_radenie=sort_by)
 
 @app.route('/api/student/<int:student_id>')
 def find_student(student_id):
