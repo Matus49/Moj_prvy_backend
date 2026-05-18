@@ -42,17 +42,24 @@ def index():
     
     # --- LOGIKA ZORADZOVANIA ---
     # Získame parameter 'sort_by' z URL (napr. /?sort_by=name)
-    sort_by = request.args.get('sort_by', 'id') # Predvolene zoradí podľa ID
+    sort_by = request.args.get('sort_by', 'id') # Predvolene podľa ID
     
-    # Skontrolujeme, či je parameter platný, aby sme predišli chybám
+    # Vytvoríme kópiu pôvodného zoznamu, aby sme ho nemenili globálne
+    studenti_na_zobrazenie = databaza_studentov.copy()
+
+    # Skontrolujeme, či chceme radiť podľa textových stĺpcov
     if sort_by in ['name', 'surname', 'nickname']:
-        # lambda s: s[sort_by].lower() zabezpečí, že sa bude radiť bez ohľadu na veľké/malé písmená
-        studenti_na_zobrazenie = sorted(databaza_studentov, key=lambda s: s[sort_by].lower())
-    else:
-        studenti_na_zobrazenie = databaza_studentov
+        n = len(studenti_na_zobrazenie)
+        # IMPLEMENTÁCIA TVOJHO BUBBLE SORTU (upravená pre slovníky a malé písmená)
+        for i in range(n):
+            for j in range(0, n - i - 1):
+                # .lower() zabezpečí správne abecedné radenie bez ohľadu na veľkosť písmen
+                if studenti_na_zobrazenie[j][sort_by].lower() > studenti_na_zobrazenie[j + 1][sort_by].lower():
+                    # Výmena prvkov na základe tvojej logiky
+                    studenti_na_zobrazenie[j], studenti_na_zobrazenie[j + 1] = studenti_na_zobrazenie[j + 1], studenti_na_zobrazenie[j]
 
     vsetky_spravy = Sprava.query.all()
-    # Do šablóny posielame už zoradený zoznam pod premennou 'students'
+    # Do šablóny posielame manuálne zoradený zoznam
     return render_template('index.html', students=studenti_na_zobrazenie, spravy=vsetky_spravy, aktualne_radenie=sort_by)
 
 @app.route('/api/student/<int:student_id>')
