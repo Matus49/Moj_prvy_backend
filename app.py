@@ -4,17 +4,15 @@ import os
 
 app = Flask(__name__)
 
-# Konfigurácia databázy
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
-# Model pre správy
 class Sprava(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     obsah = db.Column(db.String(200), nullable=False)
 
-# Databáza študentov (hardcoded pre zobrazenie)
+
 databaza_studentov = [
     {"id": 1, "name": "Matus", "surname": "Bucko", "nickname": "NEON1X", "photo": "https://i.pravatar.cc/300?u=1", "role": "Carry"},
     {"id": 2, "name": "Samo", "surname": "Haring", "nickname": "Topikar", "photo": "https://i.pravatar.cc/300?u=2", "role": "Support"},
@@ -40,26 +38,24 @@ def index():
             db.session.commit()
         return redirect('/')
     
-    # --- LOGIKA ZORADZOVANIA ---
-    # Získame parameter 'sort_by' z URL (napr. /?sort_by=name)
-    sort_by = request.args.get('sort_by', 'id') # Predvolene podľa ID
+
+    sort_by = request.args.get('sort_by', 'id')
     
-    # Vytvoríme kópiu pôvodného zoznamu, aby sme ho nemenili globálne
+
     studenti_na_zobrazenie = databaza_studentov.copy()
 
-    # Skontrolujeme, či chceme radiť podľa textových stĺpcov
     if sort_by in ['name', 'surname', 'nickname']:
         n = len(studenti_na_zobrazenie)
-        # IMPLEMENTÁCIA TVOJHO BUBBLE SORTU (upravená pre slovníky a malé písmená)
+
         for i in range(n):
             for j in range(0, n - i - 1):
-                # .lower() zabezpečí správne abecedné radenie bez ohľadu na veľkosť písmen
+
                 if studenti_na_zobrazenie[j][sort_by].lower() > studenti_na_zobrazenie[j + 1][sort_by].lower():
-                    # Výmena prvkov na základe tvojej logiky
+
                     studenti_na_zobrazenie[j], studenti_na_zobrazenie[j + 1] = studenti_na_zobrazenie[j + 1], studenti_na_zobrazenie[j]
 
     vsetky_spravy = Sprava.query.all()
-    # Do šablóny posielame manuálne zoradený zoznam
+
     return render_template('index.html', students=studenti_na_zobrazenie, spravy=vsetky_spravy, aktualne_radenie=sort_by)
 
 @app.route('/api/student/<int:student_id>')
