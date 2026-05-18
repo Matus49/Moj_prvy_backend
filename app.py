@@ -18,7 +18,7 @@ databaza_studentov = [
     {"id": 2, "name": "Samo", "surname": "Haring", "nickname": "Topikar", "photo": "https://www.youtube.com/watch?v=IVX6pUeKCqc", "role": "Support"},
     {"id": 3, "name": "Milan", "surname": "Kokina", "nickname": "RED BULL", "photo": "https://en.wikipedia.org/wiki/Red_Bull", "role": "Jungler"},
     {"id": 4, "name": "Matej", "surname": "Randziak", "nickname": "Tankista", "photo": "https://wiki.warthunder.com/unit/ussr_t_34_85_zis_53", "role": "Tank"},
-    {"id": 5, "name": "Janka", "surname": "Vargova", "nickname": "Dzejna", "photo": "https://i.pravatar.cc/300?u=5", "role": "Mage"},
+    {"id": 5, "name": "Janka", "surname": "Vargova", "nickname": "Dzejna", "photo": "https://cl.pinterest.com/jota_zzz87/hatsune-miku/", "role": "Mage"},
     {"id": 6, "name": "Martin", "surname": "Jelinek", "nickname": "Jeliman", "photo": "https://x.com/PetrosKecyaPoli/status/1249059078363627522", "role": "Duelist"},
     {"id": 7, "name": "Markus", "surname": "Martis", "nickname": "Markus", "photo": "https://lingolandedu.com/en/english-english-dictionary/jew", "role": "Initiator"},
     {"id": 8, "name": "Adrian", "surname": "Cervenka", "nickname": "Ado", "photo": "https://www.reddit.com/r/formuladank/comments/1new964/proud_gooner/", "role": "Controller"},
