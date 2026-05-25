@@ -14,16 +14,20 @@ class Sprava(db.Model):
 
 
 databaza_studentov = [
-    {"id": 1, "name": "Matus", "surname": "Bucko", "nickname": "NEON1X", "photo": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?utm_source=chatgpt.com", "role": "Carry"},
-    {"id": 2, "name": "Samo", "surname": "Haring", "nickname": "Topikar", "photo": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?utm_source=chatgpt.com", "role": "Support"},
-    {"id": 3, "name": "Milan", "surname": "Kokina", "nickname": "RED BULL", "photo": "https://images.unsplash.com/photo-1504593811423-6dd665756598?utm_source=chatgpt.com", "role": "Jungler"},
-    {"id": 4, "name": "Matej", "surname": "Randziak", "nickname": "Tankista", "photo": "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?utm_source=chatgpt.com", "role": "Tank"},
-    {"id": 5, "name": "Janka", "surname": "Vargova", "nickname": "Dzejna", "photo": "https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?utm_source=chatgpt.com", "role": "Mage"},
-    {"id": 6, "name": "Martin", "surname": "Jelinek", "nickname": "Jeliman", "photo": "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?utm_source=chatgpt.com", "role": "Duelist"},
-    {"id": 7, "name": "Markus", "surname": "Martis", "nickname": "Markus", "photo": "https://www.pexels.com/photo/portrait-of-a-bearded-man-4033857/?utm_source=chatgpt.com", "role": "Initiator"},
-    {"id": 8, "name": "Adrian", "surname": "Cervenka", "nickname": "Ado", "photo": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?utm_source=chatgpt.com", "role": "Controller"},
-    {"id": 9, "name": "Tomas", "surname": "Jurcak", "nickname": "Jurcacik", "photo": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?utm_source=chatgpt.com", "role": "Flanker"},
-    {"id": 10, "name": "Marko", "surname": "Mihalicka", "nickname": "Maro", "photo": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?utm_source=chatgpt.com", "role": "Entry Fragger"},
+    {"id": 1, "name": "Matus", "surname": "Bucko", "nickname": "NEON1X", "photo": "https://images.unsplash.com/photo-1517836357463-d25dfeac3438", "role": " Addicted Gym Rat"},
+    {"id": 2, "name": "Samo", "surname": "Haring", "nickname": "Topikar", "photo": "https://images.unsplash.com/photo-1517841905240-472988babdf9", "role": "Infinity Pocket"},
+    {"id": 3, "name": "Milan", "surname": "Kokina", "nickname": "RED BULL", "photo": "https://images.unsplash.com/photo-1517649763962-0c623066013b", "role": "Runner"},
+    {"id": 4, "name": "Matej", "surname": "Randziak", "nickname": "Tankista", "photo": "https://images.unsplash.com/photo-1544551763-46a013bb70d5", "role": "Tankist"},
+    {"id": 5, "name": "Janka", "surname": "Vargova", "nickname": "Dzejna", "photo": "https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?utm_source=chatgpt.com", "role": "Fujoshi"},
+    {"id": 6, "name": "Martin", "surname": "Jelinek", "nickname": "Jeliman", "photo": "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?utm_source=chatgpt.com", "role": "Goalie"},
+    {"id": 7, "name": "Markus", "surname": "Martis", "nickname": "Markus", "photo": "https://images.unsplash.com/photo-1542810634-71277d95dcbb", "role": "Jew"},
+    {"id": 8, "name": "Adrian", "surname": "Cervenka", "nickname": "Ado", "photo": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?utm_source=chatgpt.com", "role": "Gooner"},
+    {"id": 9, "name": "Tomas", "surname": "Jurcak", "nickname": "Jurcacik", "photo": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?utm_source=chatgpt.com", "role": "Sleeper Build"},
+    {"id": 10, "name": "Marko", "surname": "Mihalicka", "nickname": "Maro", "photo": "https://images.unsplash.com/photo-1515703407324-5f753afd8be8", "role": "Hockey Star"},
+    {"id": 11, "name": "Matus", "surname": "Holecka", "nickname": "Holecka", "photo": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?utm_source=chatgpt.com", "role": "Occupation Son"}
+    {"id": 12, "name": "Daniel", "surname": "Barta", "nickname": "Dano", "photo": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?utm_source=chatgpt.com", "role": "FPV Pilot"}
+    {"id": 13, "name": "Lukas", "surname": "Vindis", "nickname": "Vindik", "photo": "https://images.unsplash.com/photo-1515879218367-8466d910aaa4", "role": "Web Developer"}
+    {"id": 14, "name": "Samuel", "surname": "Uhrik", "nickname": "Samo", "photo": "https://images.unsplash.com/photo-1549719386-74dfcbf7dbed", "role": "Fighter"}
 ]
 
 with app.app_context():
