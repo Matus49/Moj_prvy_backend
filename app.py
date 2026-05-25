@@ -14,16 +14,16 @@ class Sprava(db.Model):
 
 
 databaza_studentov = [
-    {"id": 1, "name": "Matus", "surname": "Bucko", "nickname": "NEON1X", "photo": "https://www.1day.sk/jagermeister-35-0-7l", "role": "Carry"},
-    {"id": 2, "name": "Samo", "surname": "Haring", "nickname": "Topikar", "photo": "https://www.youtube.com/watch?v=IVX6pUeKCqc", "role": "Support"},
-    {"id": 3, "name": "Milan", "surname": "Kokina", "nickname": "RED BULL", "photo": "https://en.wikipedia.org/wiki/Red_Bull", "role": "Jungler"},
-    {"id": 4, "name": "Matej", "surname": "Randziak", "nickname": "Tankista", "photo": "https://wiki.warthunder.com/unit/ussr_t_34_85_zis_53", "role": "Tank"},
-    {"id": 5, "name": "Janka", "surname": "Vargova", "nickname": "Dzejna", "photo": "https://www.google.com/imgres?q=micku&imgurl=https%3A%2F%2Fimages.steamusercontent.com%2Fugc%2F31865560760044569%2F4B42C990F0A6A5DE7E2EE0662AF78498592E175C%2F%3Fimw%3D5000%26imh%3D5000%26ima%3Dfit%26impolicy%3DLetterbox%26imcolor%3D%2523000000%26letterbox%3Dfalse&imgrefurl=https%3A%2F%2Fsteamcommunity.com%2Fsharedfiles%2Ffiledetails%2F%3Fl%3Dschinese%26id%3D427608809&docid=lBHv6rPWSjODHM&tbnid=4M6dkNhpY6nHnM&vet=12ahUKEwijxI2KpsKUAxU-SPEDHeZoJK4QnPAOegQIMhAA..i&w=484&h=600&hcb=2&itg=1&ved=2ahUKEwijxI2KpsKUAxU-SPEDHeZoJK4QnPAOegQIMhAA", "role": "Mage"},
-    {"id": 6, "name": "Martin", "surname": "Jelinek", "nickname": "Jeliman", "photo": "https://x.com/PetrosKecyaPoli/status/1249059078363627522", "role": "Duelist"},
-    {"id": 7, "name": "Markus", "surname": "Martis", "nickname": "Markus", "photo": "https://lingolandedu.com/en/english-english-dictionary/jew", "role": "Initiator"},
-    {"id": 8, "name": "Adrian", "surname": "Cervenka", "nickname": "Ado", "photo": "https://www.reddit.com/r/formuladank/comments/1new964/proud_gooner/", "role": "Controller"},
-    {"id": 9, "name": "Tomas", "surname": "Jurcak", "nickname": "Jurcacik", "photo": "https://www.ferex.sk/detail/velkokapacitny-kontajner-zatvoreny-7-m3", "role": "Flanker"},
-    {"id": 10, "name": "Marko", "surname": "Mihalicka", "nickname": "Maro", "photo": "https://www.teraz.sk/sport/hk-nitra-zvitazili-v-zapase-s-hkm-zvo/911092-clanok.html", "role": "Entry Fragger"},
+    {"id": 1, "name": "Matus", "surname": "Bucko", "nickname": "NEON1X", "photo": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?utm_source=chatgpt.com", "role": "Carry"},
+    {"id": 2, "name": "Samo", "surname": "Haring", "nickname": "Topikar", "photo": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?utm_source=chatgpt.com", "role": "Support"},
+    {"id": 3, "name": "Milan", "surname": "Kokina", "nickname": "RED BULL", "photo": "https://images.unsplash.com/photo-1504593811423-6dd665756598?utm_source=chatgpt.com", "role": "Jungler"},
+    {"id": 4, "name": "Matej", "surname": "Randziak", "nickname": "Tankista", "photo": "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?utm_source=chatgpt.com", "role": "Tank"},
+    {"id": 5, "name": "Janka", "surname": "Vargova", "nickname": "Dzejna", "photo": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?utm_source=chatgpt.com", "role": "Mage"},
+    {"id": 6, "name": "Martin", "surname": "Jelinek", "nickname": "Jeliman", "photo": "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?utm_source=chatgpt.com", "role": "Duelist"},
+    {"id": 7, "name": "Markus", "surname": "Martis", "nickname": "Markus", "photo": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?utm_source=chatgpt.com", "role": "Initiator"},
+    {"id": 8, "name": "Adrian", "surname": "Cervenka", "nickname": "Ado", "photo": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?utm_source=chatgpt.com", "role": "Controller"},
+    {"id": 9, "name": "Tomas", "surname": "Jurcak", "nickname": "Jurcacik", "photo": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?utm_source=chatgpt.com", "role": "Flanker"},
+    {"id": 10, "name": "Marko", "surname": "Mihalicka", "nickname": "Maro", "photo": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?utm_source=chatgpt.com", "role": "Entry Fragger"},
 ]
 
 with app.app_context():
